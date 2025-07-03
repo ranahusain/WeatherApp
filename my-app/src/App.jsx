@@ -44,7 +44,11 @@ function App() {
           {weather && (
             <>
               <div className="main-temp">
-                <h1>{weather.main.temp}&deg;C</h1>
+                <h1>
+                  {weather.main.temp}
+                  <span>&deg;C</span>
+                </h1>
+
                 <h2>
                   {weather.name}, {weather.sys.country}
                 </h2>
