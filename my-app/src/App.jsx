@@ -35,10 +35,11 @@ function App() {
         <Search search={search} setSearch={setSearch} />
         <button className="btn">Submit</button>
       </form>
-      <Spinner loading={loading} />
 
       {loading ? (
-        <></>
+        <>
+          <Spinner loading={loading} />
+        </>
       ) : (
         <>
           {weather && (

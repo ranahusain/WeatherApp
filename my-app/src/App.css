@@ -3,3 +3,9 @@
   color: #131a27;
   width: 50%;
 }
+
+@media (max-width: 768px) {
+  .async {
+    width: 100%;
+  }
+}
