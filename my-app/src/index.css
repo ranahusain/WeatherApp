@@ -85,21 +85,15 @@ input::placeholder {
   border-radius: 1rem;
   color: #131a27;
   text-align: center;
+  padding: 1rem;
 }
 
 .main-temp {
   margin: auto;
 }
 
-/* body {
-  margin: 0;
-  padding: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-  color: white;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  padding-top: 50px;
-} */
+.search-bar {
+  margin: auto;
+  width: 50%;
+  margin-top: 10vh;
+}

@@ -1,38 +1,31 @@
 import "./App.css";
-import "./index.css";
 import { useState } from "react";
 import axios from "axios";
+import Search from "./components/Search";
 
 function App() {
-  const [city, setCity] = useState("");
+  const [search, setSearch] = useState(null);
   const [weather, setWeather] = useState(null);
+
   const submitForm = async (e) => {
     e.preventDefault();
-    console.log(city);
+
     try {
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${
         import.meta.env.VITE_API_KEY
       }&units=metric`;
+
       const res = await axios.get(url);
       const data = res.data;
-      console.log(data);
-
-      //store results in a state function
       setWeather(data);
     } catch (error) {
-      console.error("cannot get", error);
+      console.error("Error fetching weather:", error);
     }
   };
-
   return (
     <div className="main-container">
       <form className="input-user" onSubmit={submitForm}>
-        <input
-          type="text"
-          placeholder="Enter City Name..."
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-        />
+        <Search search={search} setSearch={setSearch} />
         <button className="btn">Submit</button>
       </form>
 
@@ -47,27 +40,29 @@ function App() {
           <div className="cards-main">
             <div className="card">
               <strong>Temprature</strong>
-              <p>{weather.main.temp}</p>
+              <p>{weather.main.temp}&deg;C</p>
             </div>
             <div className="card">
               <strong>Humidity</strong>
-              <p>{weather.main.humidity}</p>
+              <p>
+                {weather.main.humidity} g/m<sup>3</sup>
+              </p>
             </div>
             <div className="card">
               <strong>Feels Like</strong>
-              <p>{weather.main.feels_like}</p>
+              <p>{weather.main.feels_like}&deg;C</p>
             </div>
             <div className="card">
-              <strong>Feels Like</strong>
+              <strong>Sky</strong>
               <p>{weather.weather[0].main}</p>
             </div>
             <div className="card">
               <strong>Sea Level</strong>
-              <p>{weather.main.sea_level}</p>
+              <p>{weather.main.sea_level} m</p>
             </div>
             <div className="card">
               <strong>Wind</strong>
-              <p>{weather.wind.speed}</p>
+              <p>{weather.wind.speed} km/h</p>
             </div>
           </div>
         </>
@@ -77,3 +72,11 @@ function App() {
 }
 
 export default App;
+// return (
+//   <>
+//     {/* <div className="search-bar">
+//       <Search />
+//     </div> */}
+//     <Body />
+//   </>
+// );
