@@ -135,7 +135,7 @@ input::placeholder {
   }
 
   .cards-main {
-    grid-template-columns: 1fr; /* stack cards vertically */
+    grid-template-columns: 1fr;
     gap: 1rem;
   }
 
